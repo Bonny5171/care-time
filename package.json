@@ -1,0 +1,24 @@
+{
+  "name": "care-time",
+  "version": "1.0.0",
+  "description": "Aplicação web para gerenciamento de agendamentos de exames hospitalares.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bonny5171/care-time.git"
+  },
+  "author": "@iBonny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bonny5171/care-time/issues"
+  },
+  "homepage": "https://github.com/Bonny5171/care-time#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.14",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
