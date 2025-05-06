@@ -1,0 +1,10 @@
+logs
+*.log
+npm-debug.log*
+dist/
+node_modules/
+package-lock.json
+.npm
+.eslintcache
+.env
+.db
