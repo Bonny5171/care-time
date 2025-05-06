@@ -1,0 +1,21 @@
+CREATE TABLE usuarios (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE NOT NULL,
+  telefone VARCHAR(20)
+);
+
+CREATE TABLE exames (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  especialidade VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE agendamentos (
+  id SERIAL PRIMARY KEY,
+  usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+  exame_id INTEGER NOT NULL REFERENCES exames(id) ON DELETE CASCADE,
+  data_hora TIMESTAMP NOT NULL,
+  observacoes TEXT
+);
+
