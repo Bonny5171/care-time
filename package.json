@@ -4,6 +4,7 @@
   "description": "Aplicação web para gerenciamento de agendamentos de exames hospitalares.",
   "main": "index.js",
   "scripts": {
+    "devServer": "tsx watch server/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,9 @@
     "@types/node": "^22.15.14",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "dotenv": "^16.0.3"
   }
 }
