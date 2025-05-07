@@ -1,3 +1,5 @@
+echo "Criando usuarios..."
+
 curl -X POST http://localhost:8080/api/users \
   -H "Content-Type: application/json" \
   -d '{
@@ -26,11 +28,13 @@ curl -X POST http://localhost:8080/api/users \
   -H "Content-Type: application/json" \
   -d '{"nome": "Elaine Souza", "email": "elaine.souza@example.com", "telefone": "11944443333"}'
 
-
+echo "Criando TODOS usuarios..."
 curl -X GET http://localhost:8080/api/users
 
+echo "Obtendo usuario do ID = 1..."
 curl -X GET http://localhost:8080/api/users/1
 
+echo "Deletando usuario do ID = 1..."
 curl -X DELETE http://localhost:3000/usuarios/1
 
 
