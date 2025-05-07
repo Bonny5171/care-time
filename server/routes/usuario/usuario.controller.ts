@@ -55,3 +55,25 @@ export const excluirUsuario = async (req: Request, res: Response) => {
     return res.status(500).json({ mensagem: 'Erro ao excluir usuário.', erro: error });
   }
 };
+
+export const obterUsuarioPorEmail = async (req: Request, res: Response) => {
+  const { email } = req.params;  // Obtém o e-mail dos parâmetros da URL
+  
+  try {
+    const usuarios = await db('usuarios')
+      .select(
+        'id',
+        'email'
+      )
+      .where('email', email);
+
+    if (usuarios.length === 0) {
+      return res.status(404).json({ mensagem: 'Nenhum usuario encontrado para este email.' });
+    }
+
+    res.status(200).json(usuarios);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensagem: 'Erro ao buscar agendamentos do usuário.' });
+  }
+};

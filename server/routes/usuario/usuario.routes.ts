@@ -3,7 +3,8 @@ const {
     listarUsuarios,
     criarUsuario,
     obterUsuario,
-    excluirUsuario
+    excluirUsuario,
+    obterUsuarioPorEmail
   } = require('./usuario.controller');
   
   const router = Router();
@@ -12,5 +13,6 @@ const {
   router.post('/', criarUsuario);
   router.get('/:id', obterUsuario);
   router.delete('/:id', excluirUsuario);
+  router.get('/usuarios/email/:email', obterUsuarioPorEmail);
   
   export default router;
