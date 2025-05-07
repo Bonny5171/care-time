@@ -1,8 +1,6 @@
 import type { Knex } from 'knex';
 import 'dotenv/config';
 
-console.log('PPPOORTA', process.env.DATABASE_URL)
-
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: 'pg',
