@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../contexts/UserContext';
 
 const ScheduleExamPage = () => {
   const [exams, setExams] = useState([]);
   const [selectedExamId, setSelectedExamId] = useState('');
   const [datetime, setDatetime] = useState('');
   const [notes, setNotes] = useState('');
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/exames')
@@ -22,12 +25,14 @@ const ScheduleExamPage = () => {
         exame_id: selectedExamId,
         data_hora: datetime,
         observacoes: notes,
-        usuario_id: 1 // simulado, pode vir do contexto
+        usuario_id: user?.id
       });
 
       alert('Agendamento realizado com sucesso!');
       setDatetime('');
       setNotes('');
+      navigate('/agendamentos');
+
     } catch (err) {
       alert('Erro ao agendar exame. Preencha todos os campos corretamente e tente novamente.');
     }
@@ -35,7 +40,7 @@ const ScheduleExamPage = () => {
 
   return (
     <div>
-      <h2>Agendar Exame</h2>
+      <h2>Agendar Novo Exame</h2>
       <form onSubmit={handleSubmit}>
         <label>Exame:</label>
         <select value={selectedExamId} onChange={e => setSelectedExamId(e.target.value)}>
