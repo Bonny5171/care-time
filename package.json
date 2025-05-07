@@ -4,7 +4,8 @@
   "description": "Aplicação web para gerenciamento de agendamentos de exames hospitalares.",
   "main": "index.js",
   "scripts": {
-    "devServer": "tsx watch server/server.ts",
+    "dev:server": "tsx watch server/server.ts",
+    "dev:frontend": "npm start --prefix frontend",
     "migrateUsers:make": "npx knex migrate:make create_usuarios",
     "migrateUsers:latest": "npx knex migrate:latest create_usuarios",
     "migrateExam:make": "npx knex migrate:make create_exames",
@@ -30,6 +31,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^5.1.0",
     "knex": "^3.1.0",
