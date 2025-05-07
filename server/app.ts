@@ -3,7 +3,7 @@ import cors from 'cors';
 
 import userRoutes from './routes/usuario/usuario.routes';
 import exameRoutes from './routes/exames/exame.routes';
-import agendamentoRoutes from './routes/agendamentos/agemdamento.routes';
+import agendamentoRoutes from './routes/agendamentos/agendamento.routes';
 
 const app = express()
 
