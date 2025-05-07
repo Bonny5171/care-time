@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import ScheduleExamPage from './pages/ScheduleExamPage';
 import ViewAppointmentsPage from './pages/ViewAppointmentsPage';
+import ViewAppointmentsDetailPage from './pages/ViewAppointmentsDetailPage';
 
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/agendar-exame" element={<ScheduleExamPage />} />
           <Route path="/agendamentos" element={<ViewAppointmentsPage />} />
+          <Route path="/appointments/:id" element={<ViewAppointmentsDetailPage />} />
           {/* Outras rotas... */}
         </Routes>
       </Router>
