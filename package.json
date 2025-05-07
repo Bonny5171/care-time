@@ -4,6 +4,10 @@
   "description": "Aplicação web para gerenciamento de agendamentos de exames hospitalares.",
   "main": "index.js",
   "scripts": {
+    "build:webServer": "npm build --prefix frontend",
+    "build:apiServer": "node dist/server.js",
+    "start:webServer": "npm start --prefix frontend",
+    "start:apiServer": "node dist/server.js",
     "dev:server": "tsx watch server/server.ts",
     "dev:frontend": "npm start --prefix frontend",
     "migrateUsers:make": "npx knex migrate:make create_usuarios",
