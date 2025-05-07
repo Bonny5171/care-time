@@ -8,7 +8,9 @@
     "migrateUsers:make": "npx knex migrate:make create_usuarios",
     "migrateUsers:latest": "npx knex migrate:latest create_usuarios",
     "migrateExam:make": "npx knex migrate:make create_exames",
-    "migrateExam:latest": "npx knex migrate:latest create_exames"
+    "migrateExam:latest": "npx knex migrate:latest create_exames",
+    "migrateAgend:make": "npx knex migrate:make create_agendamentos",
+    "migrateAgend:latest": "npx knex migrate:latest create_agendamentos"
   },
   "repository": {
     "type": "git",
