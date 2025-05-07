@@ -18,7 +18,20 @@ export const listarAgendamentos = async (req: Request, res: Response) => {
 
 export const obterAgendamento = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const agendamento = await db<Agendamento>('agendamentos').where({ id }).first();
+  //const agendamento = await db<Agendamento>('agendamentos').where({ id }).first();
+
+  const agendamento = await db('agendamentos')
+  .join('exames', 'agendamentos.exame_id', '=', 'exames.id')
+  .select(
+    'agendamentos.id',
+    'agendamentos.data_hora',
+    'agendamentos.observacoes',
+    'exames.nome as exame_nome',
+    'exames.especialidade'
+  )
+  .where('agendamentos.id', id)
+  .first();
+
   if (!agendamento) return res.status(404).json({ mensagem: 'Não encontrado' });
   res.json(agendamento);
 };
