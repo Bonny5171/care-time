@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "devServer": "tsx watch server/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrateUsers:make": "npx knex migrate:make create_usuarios",
+    "migrateUsers:latest": "npx knex migrate:latest create_usuarios"
   },
   "repository": {
     "type": "git",
@@ -18,12 +19,16 @@
   },
   "homepage": "https://github.com/Bonny5171/care-time#readme",
   "devDependencies": {
+    "@types/knex": "^0.16.1",
     "@types/node": "^22.15.14",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^5.1.0",
-    "dotenv": "^16.0.3"
+    "knex": "^3.1.0",
+    "pg": "^8.15.6"
   }
 }
