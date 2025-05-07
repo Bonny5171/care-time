@@ -1,4 +1,3 @@
-// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -8,18 +7,49 @@ const LoginPage = () => {
   const { setUser } = useUser();
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Aqui você pode fazer uma validação de nome ou id
+  const handleLogin = async () => {
     if (nome.trim() === '') return alert('Por favor, insira seu nome.');
 
-    // Criar um usuário fictício com id incremental
-    const user = {
-      id: Date.now(),  // Apenas para fins de exemplo, você pode usar um ID real aqui
-      nome,
-    };
+    try {
+      // Verifica se o usuário existe no banco
+      const response = await fetch(`http://localhost:8080/api/users/usuarios/email/${nome}`);
+      const data = await response.json();
 
-    setUser(user);  // Armazenando o usuário no contexto
-    navigate("/dashboard");
+      let user;
+      if (response.status === 200 && data) {
+        // Se o usuário já existir, recupera os dados
+        user = {
+            nome: data[0].email,
+            id: data[0].id,
+        };
+      } else {
+        // Se o usuário não existir, cria um novo usuário
+        const createResponse = await fetch('http://localhost:8080/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+                "nome": "SEM NOME",
+                "email": nome,
+                "telefone": ""
+            }),
+        });
+
+        const newUser = await createResponse.json();
+        user =  {
+            nome: newUser.email,
+            id: newUser.id,
+        };
+      }
+
+      // Armazena o usuário no contexto
+      setUser(user);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Erro ao buscar ou criar o usuário:", error);
+      alert("Ocorreu um erro, tente novamente.");
+    }
   };
 
   return (
