@@ -36,10 +36,14 @@ npm install
 ```
 
 3. **Configure o banco de dados:**
-criar arquivo ".env"
+criar arquivo para BACK-END na raiz ".env"
 ```
 DATABASE_URL=postgres://usuario:senha@localhost:5432/caretime
 PORT=8080
+```
+criar arquivo para FRONT-END em /frontend/".env"
+```
+REACT_APP_API=http://localhost:8080
 ```
 
 4. **Execute as migrations:**
