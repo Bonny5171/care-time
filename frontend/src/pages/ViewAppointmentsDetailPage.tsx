@@ -7,7 +7,7 @@ const AppointmentDetailPage = () => {
   const [appointment, setAppointment] = useState<any>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/agendamentos/${id}`)
+    axios.get(`${process.env.REACT_APP_API}/api/agendamentos/${id}`)
       .then(res => setAppointment(res.data))
       .catch(err => console.error('Erro ao buscar agendamento:', err));
   }, [id]);

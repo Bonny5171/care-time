@@ -12,7 +12,7 @@ const ScheduleExamPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/exames')
+    axios.get(`${process.env.REACT_APP_API}/api/exames`)
       .then(response => setExams(response.data))
       .catch(error => console.error('Erro ao carregar exames:', error));
   }, []);
@@ -21,7 +21,7 @@ const ScheduleExamPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:8080/api/agendamentos', {
+      await axios.post(`${process.env.REACT_APP_API}/api/agendamentos`, {
         exame_id: selectedExamId,
         data_hora: datetime,
         observacoes: notes,

@@ -12,7 +12,7 @@ const LoginPage = () => {
 
     try {
       // Verifica se o usuário existe no banco
-      const response = await fetch(`http://localhost:8080/api/users/usuarios/email/${nome}`);
+      const response = await fetch(`${process.env.REACT_APP_API}/api/users/usuarios/email/${nome}`);
       const data = await response.json();
 
       let user;
@@ -24,7 +24,7 @@ const LoginPage = () => {
         };
       } else {
         // Se o usuário não existir, cria um novo usuário
-        const createResponse = await fetch('http://localhost:8080/api/users', {
+        const createResponse = await fetch(`${process.env.REACT_APP_API}/api/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

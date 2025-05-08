@@ -14,7 +14,7 @@ const ViewAppointmentsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/agendamentos/agendamentos/${user?.id}`)
+    axios.get(`${process.env.REACT_APP_API}/api/agendamentos/agendamentos/${user?.id}`)
       .then(res => setAppointments(res.data))
       .catch(err => console.error('Erro ao buscar agendamentos:', err));
   }, []);
@@ -30,7 +30,7 @@ const ViewAppointmentsPage = () => {
   const handleDelete = async (id: number) => {
     if (window.confirm("Tem certeza que deseja excluir este agendamento?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/agendamentos/${id}`);
+        await axios.delete(`${process.env.REACT_APP_API}/api/agendamentos/${id}`);
         setAppointments(prev => prev.filter(appt => appt?.id !== id));
       } catch (error) {
         console.error('Erro ao excluir agendamento:', error);
