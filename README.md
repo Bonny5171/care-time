@@ -50,7 +50,7 @@ npx knex migrate:latest
 5. **Inicie o projetos: Back e Front**
 ```
 npm run start:server
-start:frontend
+npm run start:frontend
 ```
 
 Estrutura do Projeto 
