@@ -57,6 +57,7 @@ npm run start:server
 npm run start:frontend
 ```
 
+```
 Estrutura do Projeto 
 .
 ├── server/
@@ -69,3 +70,4 @@ Estrutura do Projeto
 ├── dist/ (gerado após build do backend)
 ├── package.json
 └── README.md
+```
