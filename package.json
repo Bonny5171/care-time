@@ -4,7 +4,7 @@
   "description": "Aplicação web para gerenciamento de agendamentos de exames hospitalares.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd src/frontend && npm install && npm --prefix src/frontend run build",
+    "postinstall": "cd src/frontend && npm install && npm run build",
     "build:server": "rm -rf dist/ && tsc",
     "build:frontend": "npm --prefix src/frontend run build",
     "start:server": "node dist/src/server/server.js",
