@@ -4,20 +4,23 @@
   "description": "Aplicação web para gerenciamento de agendamentos de exames hospitalares.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd frontend && npm install",
+    "postinstall": "cd src/frontend && npm install",
     "build:server": "rm -rf dist/ && tsc",
     "build:frontend": "npm --prefix src/frontend run build",
     "start:server": "node dist/src/server/server.js",
     "start:frontend": "npm --prefix src/frontend run build && serve -s src/frontend/build",
-    "dev:server": "tsx watch server/server.ts",
-    "dev:frontend": "npm start --prefix frontend",
+    "start": "npm run build:server && npm run build:frontend && concurrently \"npm run start:server\" \"npm run start:frontend\"",
+    "dev:start": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
+    "dev:server": "tsx watch src/server/server.ts",
+    "dev:frontend": "npm start --prefix src/frontend",
     "migrate": "npx knex migrate:latest",
     "migrateUsers:make": "npx knex migrate:make create_usuarios",
     "migrateUsers:latest": "npx knex migrate:latest create_usuarios",
     "migrateExam:make": "npx knex migrate:make create_exames",
     "migrateExam:latest": "npx knex migrate:latest create_exames",
     "migrateAgend:make": "npx knex migrate:make create_agendamentos",
-    "migrateAgend:latest": "npx knex migrate:latest create_agendamentos"
+    "migrateAgend:latest": "npx knex migrate:latest create_agendamentos",
+    "purge:build": "rm -fr dist && rm -fr src/frontend/build"
   },
   "repository": {
     "type": "git",
@@ -40,7 +43,8 @@
     "@types/testing-library__react": "^10.0.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "serve": "^14.2.4"
   },
   "dependencies": {
     "concurrently": "^9.1.2",
@@ -49,8 +53,6 @@
     "express": "^5.1.0",
     "knex": "^3.1.0",
     "pg": "^8.15.6",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "serve": "^14.2.4"
+    "react": "^19.1.0"
   }
 }
