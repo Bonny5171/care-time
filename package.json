@@ -10,7 +10,7 @@
     "build:frontend": "npm --prefix src/frontend run build",
     "start:server": "node dist/src/server/server.js",
     "start:frontend": "node src/frontend/server.js",
-    "start": "npm run build:server && npm run build:frontend && concurrently \"npm run start:server\" \"npm run start:frontend\"",
+    "start": "node server.js",
     "dev:start": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
     "dev:server": "tsx watch src/server/server.ts",
     "dev:frontend": "npm start --prefix src/frontend",
@@ -55,5 +55,6 @@
     "knex": "^3.1.0",
     "pg": "^8.15.6",
     "react": "^19.1.0"
-  }
+  },
+  "type": "module"
 }
