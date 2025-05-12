@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix src/frontend && npm run build --prefix src/frontend",
-    "_postinstall": "cd src/frontend && npm install && npm run build",
+    "postinstall": "cd src/frontend && npm install && npm run build",
     "build:server": "rm -rf dist/ && tsc",
     "build:frontend": "npm --prefix src/frontend run build",
     "start:server": "node dist/src/server/server.js",
