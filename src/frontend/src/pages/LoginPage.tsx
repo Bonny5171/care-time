@@ -10,8 +10,6 @@ const LoginPage = () => {
   const handleLogin = async () => {
     if (nome.trim() === '') return alert('Por favor, insira seu nome.');
 
-    console.log('REACT_APP_API', process.env.REACT_APP_API);
-    
     try {
       // Verifica se o usuário existe no banco
       const response = await fetch(`${process.env.REACT_APP_API}/api/users/usuarios/email/${nome}`);
